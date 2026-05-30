@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cafe Roasta — Tower Street, King's Lynn</title>
+<meta name="description" content="Cafe Roasta on Tower Street, King's Lynn — Sunday roasts, all-day breakfast and homemade cakes. Counter service, eat-in or take-away. Open 8am.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF3E0;
+    --paper-warm: #F1E4C8;
+    --ink: #2B1F16;
+    --ink-soft: #4A382A;
+    --roast: #6F4E37;
+    --kraft: #A1764B;
+    --ember: #C75B12;
+    --rule: rgba(43,31,22,0.18);
+    --display: "Libre Baskerville", "Source Serif Pro", Georgia, serif;
+    --body: "Work Sans", "Helvetica Neue", system-ui, sans-serif;
+    --measure: 62ch;
+    --pad-x: clamp(1.25rem, 4vw, 4rem);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: clamp(1rem, 0.55rem + 0.6vw, 1.06rem);
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--paper);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(111,78,55,0.06) 1px, transparent 1px),
+      radial-gradient(rgba(111,78,55,0.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+  main, header, footer, nav { position: relative; z-index: 2; }
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0;
+    color: var(--ink);
+  }
+  p { text-wrap: pretty; hyphens: auto; margin: 0 0 1em; }
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.25em; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  /* ──────── nav ──────── */
+  .topbar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.25rem var(--pad-x) 0.85rem;
+    border-bottom: 1px solid var(--rule);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .topbar__mark {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .topbar__mark span { color: var(--ember); }
+  .nav {
+    display: flex;
+    gap: clamp(0.85rem, 2vw, 1.6rem);
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+  }
+  .nav a { text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+  .nav a:hover { border-bottom-color: var(--ember); }
+  .nav .phone {
+    font-family: var(--display);
+    text-transform: none;
+    letter-spacing: -0.005em;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--roast);
+  }
+
+  /* ──────── masthead ──────── */
+  .masthead {
+    padding: clamp(3rem, 8vw, 6.5rem) var(--pad-x) clamp(2rem, 6vw, 4rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 3vw, 2rem);
+  }
+  @media (min-width: 880px) {
+    .masthead { grid-template-columns: minmax(0, 1fr) 22rem; align-items: end; }
+  }
+  .masthead__name {
+    font-size: clamp(3.4rem, 13vw, 9.4rem);
+    letter-spacing: -0.04em;
+    line-height: 0.86;
+  }
+  .masthead__name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--roast);
+  }
+  .masthead__kicker {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.05rem, 0.6rem + 0.7vw, 1.4rem);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    letter-spacing: 0;
+    margin-top: 1.25rem;
+    max-width: 22ch;
+  }
+  .masthead__meta {
+    font-family: var(--display);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    border-left: 1px solid var(--rule);
+    padding-left: 1.25rem;
+  }
+  .masthead__meta strong { font-weight: 700; color: var(--ink); }
+  .masthead__meta .open {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-family: var(--body);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    background: var(--ember);
+    color: var(--paper);
+    padding: 0.32rem 0.7rem 0.28rem;
+    border-radius: 2px;
+  }
+
+  /* ──────── marquee ──────── */
+  .marquee {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-warm);
+    overflow: hidden;
+    --speed: 38s;
+  }
+  .marquee__track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: marquee var(--speed) linear infinite;
+    padding: 0.9rem 0;
+    font-family: var(--display);
+    font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+    font-style: italic;
+    color: var(--ink-soft);
+    will-change: transform;
+  }
+  .marquee__track span { flex-shrink: 0; }
+  .marquee__track span::after {
+    content: "·";
+    color: var(--ember);
+    margin-left: 3rem;
+    font-style: normal;
+  }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; padding-left: var(--pad-x); }
+  }
+
+  /* ──────── sections ──────── */
+  section { padding: clamp(3.25rem, 7vw, 6rem) var(--pad-x); position: relative; }
+  .section--warm { background: var(--paper-warm); border-block: 1px solid var(--rule); }
+  .section__label {
+    font-family: var(--body);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--roast);
+    margin-bottom: 1.25rem;
+    display: inline-block;
+  }
+  .section__label::before {
+    content: "—— ";
+    color: var(--ember);
+  }
+  .section__title {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    margin-bottom: 1.5rem;
+    max-width: 18ch;
+  }
+
+  /* about */
+  .about__grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
+  @media (min-width: 820px) {
+    .about__grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; }
+  }
+  .about__body p {
+    font-size: clamp(1.05rem, 0.6rem + 0.5vw, 1.2rem);
+    line-height: 1.65;
+    max-width: var(--measure);
+    color: var(--ink-soft);
+  }
+  .about__body p:first-of-type::first-line {
+    font-variant-caps: small-caps;
+    letter-spacing: 0.06em;
+  }
+  .about__body p:first-of-type::first-letter {
+    font-family: var(--display);
+    font-size: 4.2em;
+    float: left;
+    line-height: 0.85;
+    padding: 0.05em 0.12em 0 0;
+    color: var(--roast);
+  }
+  .about__aside {
+    border-top: 1px solid var(--ink);
+    padding-top: 1.25rem;
+    font-family: var(--display);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .about__aside dt {
+    font-family: var(--body);
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--roast);
+    margin-top: 0.85rem;
+  }
+  .about__aside dt:first-child { margin-top: 0; }
+  .about__aside dd { margin: 0.15rem 0 0; color: var(--ink); }
+
+  /* services */
+  .services__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .services__list li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  @supports (animation-timeline: view()) {
+    .services__list li {
+      animation: rise both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(1.25rem); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+  .services__list h3 {
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-weight: 700;
+  }
+  .services__list p {
+    margin: 0.4rem 0 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    max-width: 52ch;
+  }
+  .services__list .price {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--roast);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .services__note {
+    margin-top: 2rem;
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+
+  /* hours strip */
+  .hours {
+    display: grid;
+    gap: 0.4rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--display);
+  }
+  .hours div { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.95rem; }
+  .hours dt { font-weight: 700; }
+  .hours dd { margin: 0; color: var(--ink-soft); }
+
+  /* contact */
+  .contact__grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
+  @media (min-width: 820px) {
+    .contact__grid { grid-template-columns: 1fr 1fr; }
+  }
+  .contact__lines p { font-size: clamp(1.05rem, 0.6rem + 0.4vw, 1.18rem); margin-bottom: 1rem; }
+  .contact__lines a {
+    font-family: var(--display);
+    font-weight: 700;
+    color: var(--ember);
+    text-decoration-color: rgba(199,91,18,0.4);
+  }
+  .contact__lines .big {
+    display: block;
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .map {
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--paper-warm);
+    aspect-ratio: 4 / 3;
+  }
+  .map iframe { width: 100%; height: 100%; border: 0; display: block; filter: sepia(0.18) saturate(0.85) contrast(0.96); }
+
+  /* gallery */
+  .gallery__grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  }
+  .gallery__tile {
+    aspect-ratio: 4 / 5;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    overflow: hidden;
+  }
+  .gallery__tile:nth-child(odd) { background: #EEDDB8; }
+  .gallery__tile:nth-child(3n) { aspect-ratio: 1 / 1; }
+  .gallery__tile:nth-child(5n) { aspect-ratio: 3 / 4; }
+  .gallery__note {
+    margin-top: 1.5rem;
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  /* footer */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(3rem, 6vw, 5rem) var(--pad-x) 2rem;
+    position: relative;
+  }
+  footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+  }
+  .footer__grid {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    position: relative;
+  }
+  .footer__name {
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--paper);
+  }
+  .footer__name em { font-style: italic; color: var(--paper-warm); }
+  .footer__block dt {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--kraft);
+    margin-bottom: 0.4rem;
+  }
+  .footer__block dd {
+    font-family: var(--display);
+    margin: 0 0 0.6rem;
+    line-height: 1.4;
+    color: var(--paper);
+  }
+  .footer__block a { color: var(--paper); }
+  .footer__rule {
+    grid-column: 1 / -1;
+    border: 0;
+    border-top: 1px solid rgba(250,243,224,0.15);
+    margin: 0;
+  }
+  .footer__fine {
+    font-size: 0.78rem;
+    color: var(--kraft);
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  /* skip the awkward small viewport cell */
+  @media (max-width: 480px) {
+    .masthead__name { font-size: clamp(2.8rem, 16vw, 4rem); }
+    .nav { gap: 0.8rem; font-size: 0.74rem; letter-spacing: 0.14em; }
+    .nav .phone { font-size: 0.88rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__mark">Cafe&nbsp;Roasta <span>·</span> est. King's&nbsp;Lynn</div>
+  <nav class="nav" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#visit">Visit</a>
+    <a href="#gallery">Gallery</a>
+    <a href="tel:+441553692005" class="phone">01553 692005</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="masthead" aria-label="Introduction">
+    <div>
+      <h1 class="masthead__name">Cafe&nbsp;<em>Roasta</em>.</h1>
+      <span class="masthead__kicker">Sunday roasts, all-day breakfast and home-made cakes — counter-service on Tower Street, King's Lynn.</span>
+    </div>
+    <aside class="masthead__meta">
+      <strong>1–3 Tower Street</strong><br>
+      King's Lynn, Norfolk<br>
+      PE30&nbsp;1EJ
+      <br><span class="open">Open 8am · counter service</span>
+    </aside>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Sunday roasts — beef, pork &amp; turkey</span>
+      <span>Full English from 8am</span>
+      <span>Home-made cakes, baked here</span>
+      <span>Jacket potatoes &amp; soups</span>
+      <span>Vegan &amp; gluten-free choices</span>
+      <span>Take-away available</span>
+      <span>Sunday roasts — beef, pork &amp; turkey</span>
+      <span>Full English from 8am</span>
+      <span>Home-made cakes, baked here</span>
+      <span>Jacket potatoes &amp; soups</span>
+      <span>Vegan &amp; gluten-free choices</span>
+      <span>Take-away available</span>
+    </div>
+  </div>
+
+  <section id="about">
+    <span class="section__label">About the café</span>
+    <h2 class="section__title">An honest plate of food on Tower Street.</h2>
+    <div class="about__grid">
+      <div class="about__body">
+        <p>Cafe Roasta has been feeding King's Lynn from a corner of Tower Street for years — counter-service, plates piled high, nothing precious. Walk in, pick what looks good from the display, and find a table inside or out under the awning.</p>
+        <p>The kitchen leans traditional British: full English breakfasts laid down from eight in the morning; jacket potatoes, soups and salads through the middle of the day; cakes baked in-house; and on Sundays the roast — beef, pork and turkey with all the trimmings — that the regulars come back for.</p>
+        <p>Children welcome, dogs welcome at the outside tables, coach parties by arrangement. Vegetarian, vegan and gluten-free options on the counter most days.</p>
+      </div>
+      <dl class="about__aside">
+        <dt>Style</dt><dd>Buffet counter, eat-in or take-away</dd>
+        <dt>Known for</dt><dd>Sunday roasts &amp; home-baked cakes</dd>
+        <dt>Seating</dt><dd>Inside tables &amp; outside seating under the awning</dd>
+        <dt>Accessibility</dt><dd>Step-free access, accessible toilet, baby-changing</dd>
+        <dt>Dietary</dt><dd>Vegetarian · vegan · gluten-free</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="menu" class="section--warm">
+    <span class="section__label">What's on</span>
+    <h2 class="section__title">From the counter, all day.</h2>
+    <ul class="services__list">
+      <li>
+        <div>
+          <h3>Full English breakfast</h3>
+          <p>Served from 8am through to closing — bacon, sausage, egg, beans, tomato, mushroom, hash brown, toast. Smaller and vegetarian versions on the board.</p>
+        </div>
+        <span class="price">from open</span>
+      </li>
+      <li>
+        <div>
+          <h3>Sunday roast</h3>
+          <p>Choose beef, pork or turkey (or a plate of all three). Roast potatoes, Yorkshire pudding, seasonal veg, proper gravy. Vegetarian roast on request.</p>
+        </div>
+        <span class="price">Sundays · 9 till 4</span>
+      </li>
+      <li>
+        <div>
+          <h3>Jackets, soups &amp; sandwiches</h3>
+          <p>Daily soup, jacket potatoes with classic fillings, hot &amp; cold sandwiches, salad bowls — the lunchtime backbone of the café.</p>
+        </div>
+        <span class="price">lunch</span>
+      </li>
+      <li>
+        <div>
+          <h3>Home-made cakes &amp; bakes</h3>
+          <p>Sponges, traybakes, scones and the day's specials — all baked on site. Take a slice with a pot of tea, or a whole cake to go.</p>
+        </div>
+        <span class="price">all day</span>
+      </li>
+      <li>
+        <div>
+          <h3>Tea, coffee &amp; soft drinks</h3>
+          <p>Proper pot of tea, espresso-based coffees, hot chocolates and the usual cold drinks. Take-away cups available at the counter.</p>
+        </div>
+        <span class="price">all day</span>
+      </li>
+      <li>
+        <div>
+          <h3>Take-away &amp; group bookings</h3>
+          <p>Most of the counter is available to take away. Coach parties and larger groups can be catered for — give us a ring in advance.</p>
+        </div>
+        <span class="price">by arrangement</span>
+      </li>
+    </ul>
+    <p class="services__note">Menu rotates with the seasons and what the kitchen is in the mood for — best bet is to stop in and have a look at the counter.</p>
+
+    <dl class="hours">
+      <div><dt>Mon – Fri</dt><dd>8am – 4pm</dd></div>
+      <div><dt>Saturday</dt><dd>8am – 4:30pm</dd></div>
+      <div><dt>Sunday</dt><dd>9am – 4pm</dd></div>
+    </dl>
+  </section>
+
+  <section id="visit">
+    <span class="section__label">Find us</span>
+    <h2 class="section__title">A two-minute walk from the bus station.</h2>
+    <div class="contact__grid">
+      <div class="contact__lines">
+        <p>
+          <span class="big">1–3 Tower Street<br>King's Lynn<br>PE30 1EJ</span>
+        </p>
+        <p>Phone the café: <a href="tel:+441553692005">01553 692005</a></p>
+        <p>Open Monday to Saturday from 8am, Sundays from 9am. Last orders thirty minutes before close. Step-free access and accessible toilet on site.</p>
+        <p>Looking for the Sunday roast? Arrive earlier rather than later — it tends to sell out by mid-afternoon.</p>
+      </div>
+      <div class="map" aria-label="Map showing Cafe Roasta on Tower Street, King's Lynn">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=1+Tower+Street,+King's+Lynn,+PE30+1EJ&output=embed"
+          title="Map of Cafe Roasta, 1 Tower Street, King's Lynn, PE30 1EJ"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section--warm">
+    <span class="section__label">Inside the café</span>
+    <h2 class="section__title">Photographs in progress.</h2>
+    <div class="gallery__grid">
+      <div class="gallery__tile">Counter display</div>
+      <div class="gallery__tile">Sunday roast plate</div>
+      <div class="gallery__tile">Outside tables</div>
+      <div class="gallery__tile">Cake of the day</div>
+      <div class="gallery__tile">Morning service</div>
+      <div class="gallery__tile">The team</div>
+    </div>
+    <p class="gallery__note">— Real photographs to follow. If you've taken one inside the café, ring us on 01553 692005 and we'll happily put it up.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer__grid">
+    <h2 class="footer__name">Cafe&nbsp;Roasta,<br><em>King's&nbsp;Lynn.</em></h2>
+    <dl class="footer__block">
+      <dt>Find us</dt>
+      <dd>1–3 Tower Street<br>King's Lynn<br>Norfolk · PE30 1EJ</dd>
+    </dl>
+    <dl class="footer__block">
+      <dt>Reach the café</dt>
+      <dd><a href="tel:+441553692005">01553&nbsp;692005</a></dd>
+      <dt>Opening hours</dt>
+      <dd>
+        Mon – Fri · 8am – 4pm<br>
+        Saturday · 8am – 4:30pm<br>
+        Sunday · 9am – 4pm
+      </dd>
+    </dl>
+    <dl class="footer__block">
+      <dt>Style of place</dt>
+      <dd>Counter service, eat-in or take-away. Children, dogs at the outside tables, and coach parties by arrangement.</dd>
+    </dl>
+    <hr class="footer__rule">
+    <div class="footer__fine">
+      <span>© Cafe Roasta · Tower Street, King's Lynn</span>
+      <span>Site built for the café by Binning.AI.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
